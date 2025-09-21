@@ -9,7 +9,7 @@ const Form = ({ task, handleTask, handleSubmit }) => {
           value={task}
           onChange={handleTask}
         />
-        <button className="p-2.5 bg-amber-100 shadow-2xs" type="submit">
+        <button className="bg-amber-100 p-2.5 shadow-2xs" type="submit">
           Add
         </button>
       </form>
