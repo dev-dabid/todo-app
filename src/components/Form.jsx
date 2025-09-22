@@ -1,17 +1,33 @@
-const Form = ({ task, handleTask, handleSubmit }) => {
+const Form = ({ task, handleTask, handleSubmit, handleModal }) => {
   return (
-    <div className="flex justify-center align-middle">
-      <form onSubmit={handleSubmit}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+      <form
+        className="relative w-[90%] max-w-md rounded-2xl bg-white p-6 shadow-2xl"
+        onSubmit={handleSubmit}
+      >
         <input
+          className="mb-4 w-full border-2 p-2"
           placeholder="Enter a task"
-          className="border-2"
           type="text"
           value={task}
           onChange={handleTask}
+          required
         />
-        <button className="bg-amber-100 p-2.5 shadow-2xs" type="submit">
-          Add
-        </button>
+        <div className="flex gap-5">
+          <button
+            class="w-[5rem] rounded bg-gray-200 px-4 py-2 text-gray-700 hover:bg-gray-300"
+            type="submit"
+            onClick={handleModal}
+          >
+            cancel
+          </button>
+          <button
+            class="w-[5rem] rounded bg-amber-400 px-4 py-2 text-gray-700 hover:bg-amber-500"
+            type="submit"
+          >
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );
