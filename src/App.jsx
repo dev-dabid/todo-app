@@ -4,21 +4,35 @@ import Button from "./components/Button";
 import Form from "./components/Form";
 
 const App = () => {
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState({
+    name: "",
+    description: "",
+    date: "",
+    time: "",
+  });
   const [taskList, setTaskList] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleTask = (e) => {
-    const text = e.target.value;
-    setTask(text);
+    const { name, value } = e.target;
+    setTask((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task === "") return;
     setTaskList((prev) => [...prev, task]);
-    setTask("");
+    setTask({
+      name: "",
+      description: "",
+      date: "",
+      time: "",
+    });
     handleModal();
+    console.log(taskList);
   };
 
   const handleModal = () => {
@@ -40,9 +54,9 @@ const App = () => {
             />
           )}
 
-          {taskList.map((task, index) => {
+          {/* {taskList.map((task, index) => {
             return <p key={index}>{task}</p>;
-          })}
+          })} */}
         </div>
       </section>
     </main>
