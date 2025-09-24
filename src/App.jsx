@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Time from "./components/Time";
 import Button from "./components/Button";
 import Form from "./components/Form";
+import Note from "./components/Note";
 
 const App = () => {
   const [task, setTask] = useState({
@@ -13,6 +14,7 @@ const App = () => {
     category: "",
   });
   const [taskList, setTaskList] = useState([]);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleTask = (e) => {
@@ -57,9 +59,20 @@ const App = () => {
             />
           )}
 
-          {/* {taskList.map((task, index) => {
-            return <p key={index}>{task}</p>;
-          })} */}
+          <div className="mt-10 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] justify-center gap-2 sm:grid-cols-3">
+            {taskList.map((task, index) => {
+              return (
+                <Note
+                  key={index}
+                  name={task.name}
+                  description={task.description}
+                  date={task.date}
+                  time={task.time}
+                  category={task.category}
+                />
+              );
+            })}
+          </div>
         </div>
       </section>
     </main>
