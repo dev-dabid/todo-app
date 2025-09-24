@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
+import Time from "./components/Time";
 import Button from "./components/Button";
 import Form from "./components/Form";
 
@@ -9,6 +10,7 @@ const App = () => {
     description: "",
     date: "",
     time: "",
+    category: "",
   });
   const [taskList, setTaskList] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +44,9 @@ const App = () => {
   return (
     <main>
       <Header />
-      <section className="px-4 sm:px-6 lg:px-8">
-        <div className="pt container mx-auto max-w-7xl pt-10">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Time />
+        <div className="pt mx-auto max-w-7xl pt-10">
           <Button handleModal={handleModal} />
           {isOpen && (
             <Form
