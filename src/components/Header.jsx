@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container mx-auto max-w-7xl">
         <div className="flex justify-between">
           <div>
-            <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white">
+            <h1 className="text-[clamp(1.5rem,5vw,2.5rem)] font-bold text-white">
               Planner
             </h1>
           </div>

@@ -1,4 +1,16 @@
+import { useState } from "react";
+
 const Note = ({ name, description, date, time, category }) => {
+  const formatDate = (rawDate, locale = "en-US") => {
+    if (!rawDate) return "";
+    const date = new Date(rawDate);
+    return new Intl.DateTimeFormat(locale, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(date);
+  };
+
   const formatTime = (time) => {
     if (!time) return "";
     const [hour, minute] = time.split(":");
@@ -12,17 +24,32 @@ const Note = ({ name, description, date, time, category }) => {
   };
 
   return (
-    <div className="relative rounded-lg border-2 border-solid border-amber-300 p-[clamp(2px,2vw,20px)]">
-      <div className="absolute top-[-2px] right-[-2px] rounded-tr-lg bg-amber-100 px-[clamp(2px,5vw,10px)] py-[clamp(1px,2vw,2px)] text-[clamp(1rem,2vw,1.5rem)] text-white">
-        {category === "" ? "None" : category}
-      </div>
-      <h2 className="max-w-[22ch] pb-3 text-xl font-medium break-words underline">
+    <div className="relative rounded-[10px] border-1 border-solid border-amber-300 p-[clamp(15px,2vw,20px)]">
+      <h2 className="max-w-[22ch] pb-3 text-xl font-medium break-words">
         {name}
       </h2>
-      <p className="pb-5">{description}</p>
-      <div className="flex w-full justify-between">
-        <p>{date}</p>
-        <p>{formatTime(time)}</p>
+      <p className="w-full max-w-prose pb-10 break-all whitespace-normal">
+        {description}
+      </p>
+      <div className="flex justify-between align-bottom">
+        <div className="font-semibold underline">{category}</div>
+        <div className="flex gap-2">
+          {time && (
+            <div className="rounded-2xl bg-amber-500 px-2">
+              <p className="h-full text-center text-xs text-white">
+                {formatTime(time)}
+              </p>
+            </div>
+          )}
+
+          {date && (
+            <div>
+              <p className="rounded-2xl bg-amber-500 px-2 text-xs text-white">
+                {formatDate(date)}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

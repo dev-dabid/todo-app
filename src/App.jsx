@@ -59,7 +59,7 @@ const App = () => {
             />
           )}
 
-          <div className="mt-10 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] justify-center gap-2 sm:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {taskList.map((task, index) => {
               return (
                 <Note
