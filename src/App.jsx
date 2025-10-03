@@ -36,7 +36,6 @@ const App = () => {
       time: "",
     });
     handleModal();
-    console.log(taskList);
   };
 
   const handleDelete = (id) => {

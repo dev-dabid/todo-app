@@ -9,6 +9,8 @@ const Note = ({
   category,
   handleDelete,
 }) => {
+  const [modal, setModal] = useState(false);
+
   const formatDate = (rawDate, locale = "en-US") => {
     if (!rawDate) return "";
     const date = new Date(rawDate);
@@ -48,12 +50,21 @@ const Note = ({
     }
   };
 
+  const onDelete = () => {
+    handleDelete(id);
+    setModal((prev) => !prev);
+  };
+
   return (
     <div
       className="relative rounded-[10px] border-1 border-solid border-amber-300 p-[clamp(15px,2vw,20px)]"
       date-id={id}
     >
-      <button className="absolute right-5" onClick={(e) => handleDelete(id)}>
+      <button
+        className="absolute right-5 cursor-pointer"
+        title="delete"
+        onClick={(e) => setModal((prev) => !prev)}
+      >
         <svg
           className="w-6 text-red-500"
           viewBox="0 -5 32 32"
@@ -121,6 +132,27 @@ const Note = ({
             </div>
           )}
         </div>
+        {modal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+            <div className="flex h-40 w-70 flex-col items-center justify-center gap-10 rounded-xs border border-amber-300 bg-white">
+              <p className="text-2xl">Delete this note?</p>
+              <div className="flex justify-center gap-7">
+                <button
+                  className="rounded-xs bg-amber-400 px-[25px] py-[10px] font-bold text-white"
+                  onClick={(e) => onDelete(id)}
+                >
+                  Yes
+                </button>
+                <button
+                  className="rounded-xs bg-gray-400 px-[25px] py-[10px] font-bold text-white"
+                  onClick={() => setModal((prev) => !prev)}
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
