@@ -58,11 +58,11 @@ const Form = ({ task, handleTask, handleSubmit, handleModal }) => {
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:border-amber-400 focus:ring-2 focus:ring-amber-200 focus:outline-none sm:px-4 sm:py-3 sm:text-base"
           >
             <option value="">Select category</option>
-            <option value="work">Work</option>
-            <option value="study">Study</option>
-            <option value="hobby">Hobby</option>
-            <option value="personal">Personal</option>
-            <option value="health">Health</option>
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Hobby">Hobby</option>
+            <option value="Personal">Personal</option>
+            <option value="Health">Health</option>
           </select>
         </div>
 

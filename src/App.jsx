@@ -39,6 +39,10 @@ const App = () => {
     console.log(taskList);
   };
 
+  const handleDelete = (id) => {
+    setTaskList((prev) => prev.filter((_, index) => index !== id));
+  };
+
   const handleModal = () => {
     setIsOpen((prev) => !prev);
   };
@@ -64,11 +68,13 @@ const App = () => {
               return (
                 <Note
                   key={index}
+                  id={index}
                   name={task.name}
                   description={task.description}
                   date={task.date}
                   time={task.time}
                   category={task.category}
+                  handleDelete={handleDelete}
                 />
               );
             })}
