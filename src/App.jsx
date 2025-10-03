@@ -27,13 +27,14 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (task === "") return;
+    if (!task.name.trim()) return;
     setTaskList((prev) => [...prev, task]);
     setTask({
       name: "",
       description: "",
       date: "",
       time: "",
+      category: "",
     });
     handleModal();
   };
