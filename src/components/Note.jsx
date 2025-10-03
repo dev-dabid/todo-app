@@ -23,6 +23,23 @@ const Note = ({ name, description, date, time, category }) => {
     }).format(date);
   };
 
+  const color = () => {
+    switch (category) {
+      case "work":
+        return "text-blue-500";
+      case "study":
+        return "text-indigo-500";
+      case "personal":
+        return "text-green-500";
+      case "health":
+        return "text-red-500";
+      case "hobby":
+        return "text-purple-500";
+      default:
+        return "text-gray-500";
+    }
+  };
+
   return (
     <div className="relative rounded-[10px] border-1 border-solid border-amber-300 p-[clamp(15px,2vw,20px)]">
       <h2 className="max-w-[22ch] pb-3 text-xl font-medium break-words">
@@ -31,8 +48,8 @@ const Note = ({ name, description, date, time, category }) => {
       <p className="w-full max-w-prose pb-10 break-all whitespace-normal">
         {description}
       </p>
-      <div className="flex justify-between align-bottom">
-        <div className="font-semibold underline">{category}</div>
+      <div className="flex items-center justify-between">
+        <div className={`${color()} font-semibold underline`}>{category}</div>
         <div className="flex gap-2">
           {time && (
             <div className="rounded-2xl bg-amber-500 px-2">

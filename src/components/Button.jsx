@@ -1,7 +1,7 @@
 const Button = ({ handleModal }) => {
   return (
     <button
-      className="flex cursor-pointer flex-col align-middle"
+      className="flex cursor-pointer flex-col items-center"
       onClick={handleModal}
     >
       <svg
